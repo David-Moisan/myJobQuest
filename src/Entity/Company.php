@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompanyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
@@ -34,6 +36,14 @@ class Company
     #[ORM\ManyToOne(targetEntity: DomainCompany::class, inversedBy: 'companies')]
     #[ORM\JoinColumn(nullable: false)]
     private $types;
+
+    #[ORM\OneToMany(mappedBy: 'companies', targetEntity: JobOffer::class, orphanRemoval: true)]
+    private $jobOffers;
+
+    public function __construct()
+    {
+        $this->jobOffers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +130,36 @@ class Company
     public function setTypes(?DomainCompany $types): self
     {
         $this->types = $types;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, JobOffer>
+     */
+    public function getJobOffers(): Collection
+    {
+        return $this->jobOffers;
+    }
+
+    public function addJobOffer(JobOffer $jobOffer): self
+    {
+        if (!$this->jobOffers->contains($jobOffer)) {
+            $this->jobOffers[] = $jobOffer;
+            $jobOffer->setCompanies($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJobOffer(JobOffer $jobOffer): self
+    {
+        if ($this->jobOffers->removeElement($jobOffer)) {
+            // set the owning side to null (unless already changed)
+            if ($jobOffer->getCompanies() === $this) {
+                $jobOffer->setCompanies(null);
+            }
+        }
 
         return $this;
     }
