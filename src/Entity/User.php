@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -41,6 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private $created_at;
+
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: ApplyJob::class)]
+    private $applyJobs;
+
+    public function __construct()
+    {
+        $this->applyJobs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -215,6 +225,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ApplyJob>
+     */
+    public function getApplyJobs(): Collection
+    {
+        return $this->applyJobs;
+    }
+
+    public function addApplyJob(ApplyJob $applyJob): self
+    {
+        if (!$this->applyJobs->contains($applyJob)) {
+            $this->applyJobs[] = $applyJob;
+            $applyJob->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplyJob(ApplyJob $applyJob): self
+    {
+        if ($this->applyJobs->removeElement($applyJob)) {
+            // set the owning side to null (unless already changed)
+            if ($applyJob->getUsers() === $this) {
+                $applyJob->setUsers(null);
+            }
+        }
 
         return $this;
     }
