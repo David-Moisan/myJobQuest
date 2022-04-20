@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    font-size: 16px;
+}
+
+/** Navigation */
+.navbar {
+    min-height: 89px !important;
+}
+
+.navbar-nav {
+    align-items: center !important;
+}
+
+.nav-user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account__avatar>img {
+    height: 34px;
+    width: 34px;
+    margin-right: 0.21rem;
+}
+
+.account__infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.account__job {
+    font-size: 0.89rem;
+}
