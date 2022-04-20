@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <form class="d-flex">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Search">
+            <button type="submit" class="btn btn-warning">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="dropdownLanguage" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('assets/source/united-states.png')}}" alt="US-us" width="21" height="21" />
+                    English
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+                    <li>
+                        <a href="#" class="dropdown-item">
+                            <img src="{{asset('assets/source/france.png')}}" alt="FR-fr" width="21" height="21" />
+                            French
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" id="notification" role="button">
+                    <i class="fa fa-bell-o"></i>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle nav-user" id="userProfile" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="account__avatar">
+                        <img src="{{ asset('assets/source/logoMin.png')}}" alt="user-profile" class="rounded-circle" />
+                    </span>
+                    <span class="account__infos">
+                        <span class="account__username">David Moisan</span>
+                        <span class="account__job">Développeur Web</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="userProfile">
+                    <p class="text-center">Welcome !</p>
+                    <li>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-user"></i> My account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-sign-out"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
