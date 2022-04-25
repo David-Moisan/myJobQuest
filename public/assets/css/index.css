@@ -11,7 +11,7 @@
     --background: #221a1a;
     --backgroundHover: #161616;
     --text: #fff;
-    --textMuted: #bebebe;
+    --textMuted: #98a6ad;
 
     /*! SHADOWS*/
     --boxShadow: 3px 0px 34px 0px rgba(0, 0, 0, .2);
@@ -36,8 +36,13 @@ ul li {
     list-style: none !important;
 }
 
-/** Navigation */
+/** NAVIGATION */
 
+
+
+/*=============================================
+=            Sidebar                         =
+=============================================*/
 .sidebar-menu {
     background-color: var(--background);
     color: var(--text);
@@ -47,6 +52,14 @@ ul li {
     top: 0;
     bottom: 0;
     box-shadow: var(--boxShadow);
+}
+
+.sidebar-menu.close .logo-lg>img {
+    display: none;
+}
+
+.sidebar-menu.open .logo-sm>img {
+    display: none;
 }
 
 .sidebar-menu__container {
@@ -178,33 +191,196 @@ ul li {
     transition: color .21s;
 }
 
-
-/* .navbar {
-    min-height: 89px !important;
+.close-btn__container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 21rem;
+    background-color: #fff;
+    padding: 0.89rem;
 }
 
-.navbar-nav {
-    align-items: center !important;
+.close-btn__container>a {
+    color: #161616;
+}
+
+.close-btn__container>a:hover {
+    color: #221a1a;
+    transition: color .21s;
+}
+
+.closebtn:active #bigLogo {
+    display: none;
+}
+
+/*=====  End of Sidebar  ======*/
+
+
+/*=============================================
+=            Fixed Navbar                     =
+=============================================*/
+.navbar-topbar {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    background-color: #fff;
+    box-shadow: var(--boxShadow);
+    min-height: 4.375rem;
+    position: fixed;
+    left: 233px;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+.navbar-topbar__menu {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-topbar .navbar-topbar__dropdown li {
+    float: left;
+    max-height: 70px;
+}
+
+.navbar-topbar .navbar-topbar__menu .nav-link {
+    padding: 0;
+    color: var(--textMuted);
+    min-width: 34px;
+    display: block;
+    text-align: center;
+    margin: 0 0.625rem;
+    position: relative;
+}
+
+.dropdown-menu {
+    box-shadow: var(--boxShadow);
+    min-width: 10rem;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    color: var(--textMuted);
+    text-align: center;
+    background-clip: padding-box;
+    border: 1px solid #e7ebf0;
+    border-radius: 0.25rem;
+}
+
+.dropdown-menu-animated.dropdown-menu-end[style] {
+    left: auto;
+    right: 0;
+}
+
+.dropdown-menu-animated {
+    animation: dropdownSlide .21s both;
+    position: absolute;
+    margin: 0;
+    z-index: 1000;
+}
+
+@keyframes dropdownSlide {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(89px);
+    }
+}
+
+.notification-list {
+    margin-left: 0;
+}
+
+.notification {
+    font-size: 1.3125rem;
+    vertical-align: middle;
+    line-height: 70px;
+}
+
+.noti-icon-badge {
+    display: inline-block;
+    position: absolute;
+    top: 26px;
+    right: 20px;
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    background-color: #df5470;
 }
 
 .nav-user {
+    text-align: left !important;
+    background-color: #fafbfd;
+    border: 1px solid #f1f3fa;
+    border-width: 0 1px;
+    min-height: 4.375rem;
+    padding: calc(31px * .5) 20px calc(31px * .5) 57px !important;
+}
+
+.account-user__avatar {
+    position: absolute;
+    top: calc(38px * .5);
+    left: 15px;
+}
+
+.account-user__name {
+    display: block;
+    font-weight: 600;
+}
+
+.account-user__job {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: -3px;
+}
+
+.button-menu {
+    border: none;
+    color: var(--textMuted);
+    height: 70px;
+    line-height: 70px;
+    width: 60px;
+    background-color: transparent;
+    font-size: 21px;
+    cursor: pointer;
+    float: left;
+    z-index: 1;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: -24px;
 }
 
-.account__avatar>img {
-    height: 34px;
-    width: 34px;
-    margin-right: 0.21rem;
+.search {
+    position: static;
+    overflow-y: hidden;
 }
 
-.account__infos {
-    display: flex;
-    flex-direction: column;
+.search form {
+    padding: calc(32px * .5) 5px calc(32px * .5) 0;
+    overflow: hidden;
+    max-width: 320px;
 }
 
-.account__job {
-    font-size: 0.89rem;
+.search .form-control {
+    border: none;
+    height: calc(1.5em + 0.9rem + 2px);
+    padding-left: 40px;
+    padding-right: 20px;
+    background-color: #f1f3fa;
+    box-shadow: none;
+}
+
+.search span.search-icon {
+    position: absolute;
+    z-index: 4;
+    font-size: 21px;
+    line-height: 34px;
+    left: 10px;
+    top: 0;
+}
+
+
+/* 
+.navbar-topbar__dropdown .nav-link {
+    line-height: 70px;
 } */
