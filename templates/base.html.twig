@@ -27,8 +27,10 @@
 </head>
 
 <body>
-	{% include "_partials/_navbar.html.twig" %}
-	{% block body %}{% endblock %}
+	<div class="wrapper">
+		{% include "_partials/_navbar.html.twig" %}
+		{% block body %}{% endblock %}
+	</div>
 </body>
 
 </html>

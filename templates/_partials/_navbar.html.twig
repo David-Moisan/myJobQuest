@@ -1,4 +1,116 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="sidebar-menu">
+    <a href="{{ path('home')}}" class="logo text-center">
+        <span class="logo--size">
+            <img src="{{ asset('assets/source/logoWhite-b.png')}}" alt="logo">
+        </span>
+    </a>
+    <div class="h-100 show sidebar-menu__container" id="sidebar-menu-container">
+        <div class="sidebar-menu__wrapper">
+            <div class="sidebar-menu__mask">
+                <div class="sidebar-menu__offset">
+                    <div class="sidebar-menu__content-wrapper" tabindex="0" role="region"
+                        aria-label="scrollable content">
+                        <div class="sidebar-menu__content">
+                            <ul class="sidenav">
+                                <li class="sidenav__title sidenav__item">Navigation</li>
+                                <li class="sidenav__item active">
+                                    <a href="#sidebarDashboard" class="sidenav__link" data-bs-toggle="collapse"
+                                        aria-expanded="true" aria-controls="sidebarDashboard">
+                                        <i class="fa fa-tachometer"></i>
+                                        <span class="badge bg-danger float-end">1</span>
+                                        <span>Dashboard</span>
+                                    </a>
+                                    <div class="collapse show" id="sidebarDashboard">
+                                        <ul class="sidenav__second-level">
+                                            <li>
+                                                <a href="#">Analytics</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Ratio</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Statistics</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sidenav__title sidenav__item">Job Offer</li>
+                                <li class="sidenav__item">
+                                    <a href="#sidebarJobOffer" class="sidenav__link" data-bs-toggle="collapse"
+                                        aria-expanded="false" aria-controls="sidebarJobOffer">
+                                        <i class="fa fa-list-alt"></i>
+                                        <span class="badge bg-danger float-end">2</span>
+                                        <span>Company</span>
+                                    </a>
+                                    <div class="collapse show" id="sidebarJobOffer">
+                                        <ul class="sidenav__second-level">
+                                            <li>
+                                                <a href="#">List of companies</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Stack</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Job Type</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sidenav__title sidenav__item">Apply Job</li>
+                                <li class="sidenav__item">
+                                    <a href="#sidebarApplyJob" class="sidenav__link" data-bs-toggle="collapse"
+                                        aria-expanded="false" aria-controls="sidebarApplyJob">
+                                        <i class="fa fa-suitcase"></i>
+                                        <span class="badge bg-danger float-end">0</span>
+                                        <span>Control</span>
+                                    </a>
+                                    <div class="collapse show" id="sidebarApplyJob">
+                                        <ul class="sidenav__second-level">
+                                            <li>
+                                                <a href="#">Search for offers</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Calendar</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Response</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sidenav__title sidenav__item">Other</li>
+                                <li class="sidenav__item">
+                                    <a href="#sidebarTask" class="sidenav__link" data-bs-toggle="collapse"
+                                        aria-expanded="false" aria-controls="sidebarTask">
+                                        <i class="fa fa-tasks"></i>
+                                        <span class="badge bg-danger float-end">5</span>
+                                        <span>Tasks</span>
+                                    </a>
+                                    <div class="collapse show" id="sidebarTask">
+                                        <ul class="sidenav__second-level">
+                                            <li>
+                                                <a href="#">List</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Kanban Board</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Navbar horizontal #}
+<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <form class="d-flex">
             <input type="search" class="form-control" placeholder="Search" aria-label="Search">
@@ -55,4 +167,5 @@
             </li>
         </ul>
     </div>
-</nav>
+</nav> 
+ -->
