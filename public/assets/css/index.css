@@ -357,4 +357,14 @@ ul li {
     transition: all .21s ease-in-out;
 }
 
+.footer .footer-links a:first-of-type {
+    margin-left: 0;
+}
+
+.footer .footer-links a {
+    color: #98a6ad;
+    transition: all .21s;
+    margin-left: 1.5rem;
+}
+
 /*=====  End of Footer  ======*/
