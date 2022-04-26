@@ -191,28 +191,6 @@ ul li {
     transition: color .21s;
 }
 
-.close-btn__container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-bottom-left-radius: 21rem;
-    background-color: #fff;
-    padding: 0.89rem;
-}
-
-.close-btn__container>a {
-    color: #161616;
-}
-
-.close-btn__container>a:hover {
-    color: #221a1a;
-    transition: color .21s;
-}
-
-.closebtn:active #bigLogo {
-    display: none;
-}
-
 /*=====  End of Sidebar  ======*/
 
 
@@ -220,7 +198,7 @@ ul li {
 =            Fixed Navbar                     =
 =============================================*/
 .navbar-topbar {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 0 1.5rem;
     background-color: #fff;
     box-shadow: var(--boxShadow);
     min-height: 4.375rem;
@@ -264,6 +242,11 @@ ul li {
     background-clip: padding-box;
     border: 1px solid #e7ebf0;
     border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.dropdown-menu.show {
+    text-align: left !important;
 }
 
 .dropdown-menu-animated.dropdown-menu-end[style] {
@@ -288,26 +271,6 @@ ul li {
     }
 }
 
-.notification-list {
-    margin-left: 0;
-}
-
-.notification {
-    font-size: 1.3125rem;
-    vertical-align: middle;
-    line-height: 70px;
-}
-
-.noti-icon-badge {
-    display: inline-block;
-    position: absolute;
-    top: 26px;
-    right: 20px;
-    border-radius: 50%;
-    height: 8px;
-    width: 8px;
-    background-color: #df5470;
-}
 
 .nav-user {
     text-align: left !important;
@@ -335,7 +298,7 @@ ul li {
     margin-top: -3px;
 }
 
-.button-menu {
+/* .button-menu {
     border: none;
     color: var(--textMuted);
     height: 70px;
@@ -348,7 +311,7 @@ ul li {
     z-index: 1;
     position: relative;
     margin-left: -24px;
-}
+} */
 
 .search {
     position: static;
@@ -358,7 +321,7 @@ ul li {
 .search form {
     padding: calc(32px * .5) 5px calc(32px * .5) 0;
     overflow: hidden;
-    max-width: 320px;
+    max-width: 377px;
 }
 
 .search .form-control {
@@ -380,7 +343,18 @@ ul li {
 }
 
 
-/* 
-.navbar-topbar__dropdown .nav-link {
-    line-height: 70px;
-} */
+/*=============================================
+=            Footer                           =
+=============================================*/
+
+.footer {
+    border-top: 1px solid rgba(152, 166, 173, .2);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #98a6ad;
+    left: 233px;
+    transition: all .21s ease-in-out;
+}
+
+/*=====  End of Footer  ======*/
