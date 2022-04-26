@@ -1,15 +1,5 @@
-<div
-	class="sidebar-menu open" id="sidebar">
-	{# <div class="close-btn__container">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-				<i class="fa fa-times"></i>
-			</a>
-		</div> #}
-	<a
-		href="{{ path('home')}}" class="logo text-center">
-		{# <span class="logo-sm">
-							<img src="{{ asset('assets/source/small-logo.png')}}" alt="small-logo" id="smallLogo">
-						</span> #}
+<div class="sidebar-menu open" id="sidebar">
+	<a href="{{ path('home')}}" class="logo text-center">
 		<span class="logo-lg">
 			<img src="{{ asset('assets/source/logoWhite-b.png')}}" alt="big-logo" id="bigLogo">
 		</span>
@@ -49,7 +39,7 @@
 										<span class="badge bg-danger float-end">2</span>
 										<span>Company</span>
 									</a>
-									<div class="collapse show" id="sidebarJobOffer">
+									<div class="collapse" id="sidebarJobOffer">
 										<ul class="sidenav__second-level">
 											<li>
 												<a href="#">List of companies</a>
@@ -70,7 +60,7 @@
 										<span class="badge bg-danger float-end">0</span>
 										<span>Control</span>
 									</a>
-									<div class="collapse show" id="sidebarApplyJob">
+									<div class="collapse" id="sidebarApplyJob">
 										<ul class="sidenav__second-level">
 											<li>
 												<a href="#">Search for offers</a>
@@ -91,7 +81,7 @@
 										<span class="badge bg-danger float-end">5</span>
 										<span>Tasks</span>
 									</a>
-									<div class="collapse show" id="sidebarTask">
+									<div class="collapse" id="sidebarTask">
 										<ul class="sidenav__second-level">
 											<li>
 												<a href="#">List</a>
