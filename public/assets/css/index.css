@@ -13,6 +13,12 @@
     --text: #fff;
     --textMuted: #98a6ad;
 
+    --red: #b24c63;
+    --violet: #5438dc;
+    --bleu: #357ded;
+    --ciel: #56eef4;
+    --vert: #32e875;
+
     /*! SHADOWS*/
     --boxShadow: 3px 0px 34px 0px rgba(0, 0, 0, .2);
 }

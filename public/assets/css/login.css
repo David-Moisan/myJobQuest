@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.authentification-bg {
+    background-image: linear-gradient(to top, #221a1a 0%, #141414 100%);
+}
+
+.authentification-bg .account-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.card-header--color {
+    background-color: #357ded !important;
+}
+
+label {
+    color: #fff !important;
+}
+
+.btn--color {
+    background-color: #357ded !important;
+    color: #fff !important;
+}
+
+.footer {
+    bottom: 0;
+    padding: 19px 24px 20px;
+    position: absolute;
+    right: 0;
+    color: #98a6ad;
+    transition: all .21s ease-in-out;
+}
+
+.footer-alt {
+    text-align: center;
+    border: none;
+    left: 0;
+}
