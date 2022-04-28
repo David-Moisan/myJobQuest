@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -30,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $address;
 
     #[ORM\Column(type: 'string', length: 5)]
-    private $postal_code;
+    private $postalCode;
 
     #[ORM\Column(type: 'string', length: 100)]
     private $city;
@@ -47,9 +49,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: ApplyJob::class)]
     private $applyJobs;
 
+    public function __toString()
+    {
+        return $this->lastname + $this->firstname;
+    }
+
     public function __construct()
     {
         $this->applyJobs = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -113,9 +121,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-     /**
+    /**
      * Get the value of firstname
-     */ 
+     */
     public function getFirstname(): string
     {
         return $this->firstname;
@@ -124,7 +132,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $firstname
      * @return  self
-     */ 
+     */
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
@@ -143,7 +151,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of lastname
-     */ 
+     */
     public function getLastname(): string
     {
         return $this->lastname;
@@ -152,7 +160,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $lastname
      * @return  self
-     */ 
+     */
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
@@ -162,7 +170,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of address
-     */ 
+     */
     public function getAddress(): string
     {
         return $this->address;
@@ -171,7 +179,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $address
      * @return  self
-     */ 
+     */
     public function setAddress(string $address): self
     {
         $this->address = $address;
@@ -181,26 +189,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of postal_code
-     */ 
-    public function getPostal_code(): string
+     */
+    public function getPostalCode(): string
     {
-        return $this->postal_code;
+        return $this->postalCode;
     }
 
     /**
-     * @param string $postal_code
+     * @param string $postalCode
      * @return  self
-     */ 
-    public function setPostal_code(string $postal_code): self
+     */
+    public function setPostalCode(string $postalCode): self
     {
-        $this->postal_code = $postal_code;
+        $this->postalCode = $postalCode;
 
         return $this;
     }
 
     /**
      * Get the value of city
-     */ 
+     */
     public function getCity(): string
     {
         return $this->city;
@@ -209,7 +217,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $city
      * @return  self
-     */ 
+     */
     public function setCity(string $city): self
     {
         $this->city = $city;
