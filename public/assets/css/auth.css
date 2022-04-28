@@ -4,11 +4,23 @@
     box-sizing: border-box;
 }
 
-.authentification-bg {
+body {
+    color: #98a6ad !important;
+}
+
+ul {
+    list-style-type: none !important;
+    font-size: 0.55rem;
+    color: rgb(211, 89, 89) !important;
+}
+
+.authentification-bg,
+.register-bg {
     background-image: linear-gradient(to top, #221a1a 0%, #141414 100%);
 }
 
-.authentification-bg .account-page {
+.authentification-bg .account-page,
+.register-bg .register-page {
     display: flex;
     align-items: center;
     flex-direction: column;
