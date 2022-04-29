@@ -1,0 +1,53 @@
+.page-title-box .page-title-right {
+    float: right;
+}
+
+.page-title-right .route {
+    padding-top: 8px;
+}
+
+.route {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+    list-style: none;
+}
+
+.route-item>a {
+    color: #221a1a;
+}
+
+.route-item>a:hover {
+    color: #5438dc;
+    transition: color .21s ease-in-out;
+}
+
+.route-item:first-child::before {
+    content: '';
+}
+
+.route-item::before {
+    content: ' > ';
+    float: left;
+    padding-right: 0.5rem;
+    color: #221a1a;
+}
+
+.route-item .active {
+    color: #98a6ad !important;
+}
+
+.route-item .active:hover {
+    color: #98a6ad;
+}
+
+.status {
+    background-color: #32e875;
+}
+
+.action-btn {
+    color: #98a6ad;
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: 0 3px;
+}

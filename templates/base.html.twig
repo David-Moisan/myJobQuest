@@ -44,7 +44,8 @@
 								<img src="{{ asset('assets/source/logoMin.png')}}" alt="user-image" class="rounded-circle" height="34">
 							</span>
 							<span>
-								<span class="account-user__name">{{ app.user.firstname }} {{ app.user.lastname }}</span>
+								<span class="account-user__name">{{ app.user.firstname }}
+									{{ app.user.lastname }}</span>
 								<span class="account-user__job">Full-stack developer</span>
 							</span>
 						</a>
@@ -84,9 +85,10 @@
 					</form>
 				</div>
 			</div>
-			{% block body %}{% endblock %}
-			{% include "_partials/_footer.html.twig" %}
-		</div>
-	</body>
+			<div class="content-page"> {% block body %}{% endblock %}
+				</div>
+				{% include "_partials/_footer.html.twig" %}
+			</div>
+		</body>
 
-</html>
+	</html>

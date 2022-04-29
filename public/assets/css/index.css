@@ -42,6 +42,13 @@ ul li {
     list-style: none !important;
 }
 
+.content-page {
+    margin-left: 233px;
+    overflow: hidden;
+    padding: 108px 3px 26px;
+    min-height: 100vh;
+}
+
 /** NAVIGATION */
 
 
