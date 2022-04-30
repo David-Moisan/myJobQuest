@@ -21,6 +21,11 @@ class DomainCompany
     #[ORM\OneToMany(mappedBy: 'types', targetEntity: Company::class)]
     private $companies;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->companies = new ArrayCollection();
