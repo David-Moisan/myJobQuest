@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/company.css')}}">
+{% endblock %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-right">
+					<ol class="route m-0">
+						<li class="route-item">
+							<a href="{{ path('home')}}">Home</a>
+						</li>
+						<li class="route-item">
+							<a href="{{ path('account-user', {id: app.user.id})}}">Profile</a>
+						</li>
+					</ol>
+				</div>
+				<h4 class="page-title">Profile</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<div class="card-body profile-user-box">
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="row align-items-center">
+								<div class="col-auto">
+									<div class="avatar-lg">
+										<img src="{{asset('assets/source/logoMin.png')}}" alt="logo" class="rounded"
+											height="89">
+									</div>
+								</div>
+								<div class="col">
+									<div>
+										<h4 class="mt-1 mb-1">{{ app.user.firstname }} {{ app.user.lastname }}</h4>
+										<p class="font-13">Développeur Web Full Stack Junior</p>
+										<ul class="mb-0 list-inline">
+											<li class="list-inline-item me-3">
+												<i class="fa fa-map-marker"></i> {{app.user.city}}
+											</li>
+											<li class="list-inline-item">
+
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="text-center mt-sm-0 mt-3 text-sm-end">
+								<a href="{{ path('edit-profile', {id: app.user.id})}}" class="btn btn-light">
+									Edit Profile
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
