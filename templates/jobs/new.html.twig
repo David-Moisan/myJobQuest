@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/job-offer.css')}}">
+{% endblock %}
+
+{% block title %}Add New Job
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="page-title-box">
+					<div class="page-title-right">
+						<ol class="route m-0">
+							<li class="route-item">
+								<a href="{{ path('home')}}">Home</a>
+							</li>
+							<li class="route-item">
+								<a href="{{ path('job-offers')}}">
+									Job List
+								</a>
+							</li>
+							<li class="route-item active">
+								<a href="{{ path('job-offer.create')}}">
+									Add Job
+								</a>
+							</li>
+						</ol>
+					</div>
+					<h4 class="page-title">Add New Job Offer</h4>
+				</div>
+			</div>
+		</div>
+		{% include 'jobs/_form.html.twig' with {form: form, button: 'Add'} %}
+	</div>
+
+
+{% endblock %}
