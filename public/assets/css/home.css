@@ -1,3 +1,10 @@
 .page-title-box .page-title-right {
     float: right;
 }
+
+/**Widget */
+
+.widget-flat {
+    position: relative;
+    overflow: hidden;
+}
