@@ -44,9 +44,9 @@ class CompanyController extends AbstractController
     /**
      * @param Company $company
      * @param Request $request
-     * @return Response -> if valid -> redirect to index companies
+     * @return Response
      */
-    #[Route('/company/{id}', name: 'company.edit')]
+    #[Route('/company/edit/{id}', name: 'company.edit')]
     public function edit(Company $company, Request $request): Response
     {
         $form = $this->createForm(CompanyType::class, $company);
@@ -64,6 +64,10 @@ class CompanyController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/add-company', name: 'company.create')]
     public function create(Request $request): Response
     {
@@ -82,5 +86,20 @@ class CompanyController extends AbstractController
             'company' => $company,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @param Company $company
+     * @param Request $request 
+     * @return RedirectResponse
+     */
+    #[Route('/company/delete/{id}', name: 'company.delete')]
+    public function delete(Company $company, Request $request)
+    {
+        if ($this->isCsrfTokenValid('delete' . $company->getId(), $request->get('_token'))) {
+            $this->em->remove($company);
+            $this->em->flush();
+        }
+        return $this->redirectToRoute('companies');
     }
 }
