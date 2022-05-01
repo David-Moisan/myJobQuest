@@ -311,21 +311,6 @@ ul li {
     margin-top: -3px;
 }
 
-/* .button-menu {
-    border: none;
-    color: var(--textMuted);
-    height: 70px;
-    line-height: 70px;
-    width: 60px;
-    background-color: transparent;
-    font-size: 21px;
-    cursor: pointer;
-    float: left;
-    z-index: 1;
-    position: relative;
-    margin-left: -24px;
-} */
-
 .search {
     position: static;
     overflow-y: hidden;
