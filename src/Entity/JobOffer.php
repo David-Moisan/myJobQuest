@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\JobOfferRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,6 +26,7 @@ class JobOffer
     private $salary;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\PositiveOrZero]
     private $experience_required;
 
     #[ORM\Column(type: 'boolean')]
