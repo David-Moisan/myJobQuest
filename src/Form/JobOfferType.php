@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\JobOffer;
+use App\Entity\Stack;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,6 +31,11 @@ class JobOfferType extends AbstractType
                 ]
             ])
             ->add('companies')
+            ->add('stacks', EntityType::class, [
+                'class' => Stack::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+            ])
             ->add('type_job');
     }
 

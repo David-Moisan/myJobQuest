@@ -1,10 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/job-offer.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/order-list-menu.css')}}">
 {% endblock %}
 
-{% block title %}Add New Job
+{% block title %}
+	Add new job
 {% endblock %}
 
 {% block body %}
@@ -33,8 +34,11 @@
 				</div>
 			</div>
 		</div>
-		{% include 'jobs/_form.html.twig' with {form: form, button: 'Add'} %}
-	</div>
+		{% include 'jobs/_form.html.twig' with {form: form, button: 'Add'} %}</div>
+{% endblock %}
 
-
+{% block javascripts %}
+	$("select").select2({
+		theme: "bootstrap-5"
+		});
 {% endblock %}

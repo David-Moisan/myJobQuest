@@ -21,23 +21,28 @@
 								</div>
 							</div>
 							<div class="row g-4">
-								<div class="mb-3 col-md-2">
-									{{ form_row(form.english_required)}}
-								</div>
-								<div class="mb-3 col-md-2">
-									{{ form_row(form.remote)}}
-								</div>
 								<div class="mb-3 col-md-4">
 									{{ form_row(form.type_job)}}
 								</div>
 								<div class="mb-3 col-md-4">
 									{{ form_row(form.companies)}}
 								</div>
+								<div class="mb-3 col-md-4">
+									{{ form_row(form.stacks)}}
+								</div>
+							</div>
+							<div class="row g-2">
+								<div class="mb-3 col-md-2">
+									{{ form_row(form.english_required)}}
+								</div>
+								<div class="mb-3 col-md-2">
+									{{ form_row(form.remote)}}
+								</div>
 							</div>
 							<div class="mb-3">
 								{{ form_row(form.comment)}}
 							</div>
-							<button class="mt-2 btn bt-lg btn-primary" type="submit">
+							<button class=" btn bt-lg btn-primary" type="submit">
 								{{button}}
 							</button>
 							{{ form_end(form)}}

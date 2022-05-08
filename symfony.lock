@@ -1,4 +1,7 @@
 {
+    "apalfrey/select2-bootstrap-5-theme": {
+        "version": "1.2.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {

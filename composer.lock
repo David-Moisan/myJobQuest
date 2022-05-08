@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36efcc6690b87f1afb63d30e6fc13575",
+    "content-hash": "a3515442e5d2c51d9d86d15e0cd30381",
     "packages": [
+        {
+            "name": "apalfrey/select2-bootstrap-5-theme",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apalfrey/select2-bootstrap-5-theme.git",
+                "reference": "856313fb60c6e9d5d0ef6909290840d96139b906"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apalfrey/select2-bootstrap-5-theme/zipball/856313fb60c6e9d5d0ef6909290840d96139b906",
+                "reference": "856313fb60c6e9d5d0ef6909290840d96139b906",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Palfrey",
+                    "email": "apalfrey@apalfrey.me"
+                }
+            ],
+            "description": "Select2 theme for Bootstrap 5",
+            "homepage": "https://github.com/apalfrey/select2-bootstrap-5-theme",
+            "keywords": [
+                "bootstrap",
+                "bootstrap-5",
+                "bootstrap5",
+                "css",
+                "scss",
+                "select2",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/apalfrey/select2-bootstrap-5-theme/issues",
+                "source": "https://github.com/apalfrey/select2-bootstrap-5-theme/tree/1.2.0"
+            },
+            "time": "2021-11-01T21:48:30+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "1.13.2",
