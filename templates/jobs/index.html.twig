@@ -1,151 +1,132 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/order-list-menu.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/order-list-menu.css')}}">
 {% endblock %}
 
 {% block title %}Job offer list
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-12">
-			<div class="page-title-box">
-				<div class="page-title-right">
-					<ol class="route m-0">
-						<li class="route-item">
-							<a href="{{ path('home')}}">Home</a>
-						</li>
-						<li class="route-item">
-							<a href="{{ path('job-offers')}}">Job Offers</a>
-						</li>
-					</ol>
-				</div>
-				<h4 class="page-title">Job offers list</h4>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row mb-2">
-						<div class="col-xl-8">
-							<form
-								class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-								<div class="col-auto">
-									<label for="inputSearch" class="visually-hidden">Search</label>
-									<input type="search" name="search" id="inputSearch" class="form-control"
-										placeholder="Search">
+	<div class="container-fluid">
+		{% include "_partials/_headers.html.twig" with {
+			title: 'Job offers list', 
+			routes: ['home', 'job-offers'],  
+		} %}
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row mb-2">
+							<div class="col-xl-8">
+								<form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+									<div class="col-auto">
+										<label for="inputSearch" class="visually-hidden">Search</label>
+										<input type="search" name="search" id="inputSearch" class="form-control" placeholder="Search">
+									</div>
+								</form>
+							</div>
+							<div class="col-xl-4">
+								<div class="text-xl-end mt-xl-0 mt-2">
+									<a href="{{ path('job-offer.create')}}">
+										<button type="button" class="btn btn-success mb-2 me-2">Add New Job Offer</button>
+									</a>
+									<button type="button" class="btn btn-light mb-2">Export</button>
 								</div>
-							</form>
-						</div>
-						<div class="col-xl-4">
-							<div class="text-xl-end mt-xl-0 mt-2">
-								<a href="{{ path('job-offer.create')}}">
-									<button type="button" class="btn btn-success mb-2 me-2">Add New Job Offer</button>
-								</a>
-								<button type="button" class="btn btn-light mb-2">Export</button>
 							</div>
 						</div>
-					</div>
-					<div class="table-responsive">
-						<table class="table table-centered table-nowrap mb-0">
-							<thead class="table-light">
-								<tr>
-									<th style="width: 21px;">
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="selectAllCompany">
-											<label for="selectAllCompany" class="form-check-label">&nbsp;</label>
-										</div>
-									</th>
-									<th>Job title</th>
-									<th>Level</th>
-									<th>Salary</th>
-									<th>Experience</th>
-									<th>English</th>
-									<th>Remote</th>
-									<th>Comment</th>
-									<th style="width: 62.5px;">Edit</th>
-									<th style="width: 62.5px;">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for jobOffer in jobOffers %}
-								<tr>
-									<td>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="{{"checkJob" ~ jobOffer.id}}">
-											<label for="{{"customJob" ~ jobOffer.id}}"
-												class="form-check-label">&nbsp;</label>
-										</div>
-									</td>
-									<td>
-										<p class="fw-bold">{{jobOffer.title}}</p>
-									</td>
-									<td>
-										<p>{{jobOffer.levelSearch}}</p>
-									</td>
-									<td>{{jobOffer.salary}}</td>
-									{% if jobOffer.experienceRequired == 0 %}
-									<td>
-										<p>
-											No experience required
-										</p>
-									</td>
-									{% else %}
-									<td>{{jobOffer.experienceRequired}} years</td>
-									{% endif %}
-									{% if jobOffer.englishRequired == true %}
-									<td>
-										<i class="fa fa-check" style="color: green;"></i>
-									</td>
-									{% else %}
-									<td>
-										<i class="fa fa-times" style="color: red;"></i>
-									</td>
-									{% endif %}
-									{% if jobOffer.remote == null %}
-									<td>
-										<i class="fa fa-question-circle" style="color: gray;"></i>
-									</td>
-									{% elseif jobOffer.remote == true %}
-									<td>
-										<i class="fa fa-check" style="color: green;"></i>
-									</td>
-									{% else %}
-									<td>
-										<i class="fa fa-times" style="color: red;"></i>
-									</td>
-									{% endif %}
-									<td>{{jobOffer.comment}}</td>
-									<td>
-										<a href="{{ path('job-offer.edit', {id: jobOffer.id})}}" class="action-btn">
-											<i class="fa fa-pencil-square-o"></i>
-										</a>
-									</td>
-									<td>
-										<form action="{{ path('job-offer.delete', {id: jobOffer.id})}}"
-											style="display: inline-block;" method="post">
-											<input type="hidden" name="_method" value="DELETE">
-											<input type="hidden" name="_token"
-												value="{{ csrf_token('delete' ~ jobOffer.id) }}">
-											<button class="action-btn border-0" type="submit"
-												style="background-color: transparent;">
-												<i class="fa fa-trash-o"></i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+						<div class="table-responsive">
+							<table class="table table-centered table-nowrap mb-0">
+								<thead class="table-light">
+									<tr>
+										<th style="width: 21px;">
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input" id="selectAllCompany">
+												<label for="selectAllCompany" class="form-check-label">&nbsp;</label>
+											</div>
+										</th>
+										<th>Job title</th>
+										<th>Level</th>
+										<th>Salary</th>
+										<th>Experience</th>
+										<th>English</th>
+										<th>Remote</th>
+										<th>Comment</th>
+										<th style="width: 62.5px;">Edit</th>
+										<th style="width: 62.5px;">Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for jobOffer in jobOffers %}
+										<tr>
+											<td>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="{{"checkJob" ~ jobOffer.id}}">
+													<label for="{{"customJob" ~ jobOffer.id}}" class="form-check-label">&nbsp;</label>
+												</div>
+											</td>
+											<td>
+												<p class="fw-bold">{{jobOffer.title}}</p>
+											</td>
+											<td>
+												<p>{{jobOffer.levelSearch}}</p>
+											</td>
+											<td>{{jobOffer.salary}}</td>
+											{% if jobOffer.experienceRequired == 0 %}
+												<td>
+													<p>
+														No experience required
+													</p>
+												</td>
+											{% else %}
+												<td>{{jobOffer.experienceRequired}}
+													years</td>
+											{% endif %}
+											{% if jobOffer.englishRequired == true %}
+												<td>
+													<i class="fa fa-check" style="color: green;"></i>
+												</td>
+											{% else %}
+												<td>
+													<i class="fa fa-times" style="color: red;"></i>
+												</td>
+											{% endif %}
+											{% if jobOffer.remote == null %}
+												<td>
+													<i class="fa fa-question-circle" style="color: gray;"></i>
+												</td>
+											{% elseif jobOffer.remote == true %}
+												<td>
+													<i class="fa fa-check" style="color: green;"></i>
+												</td>
+											{% else %}
+												<td>
+													<i class="fa fa-times" style="color: red;"></i>
+												</td>
+											{% endif %}
+											<td>{{jobOffer.comment}}</td>
+											<td>
+												<a href="{{ path('job-offer.edit', {id: jobOffer.id})}}" class="action-btn">
+													<i class="fa fa-pencil-square-o"></i>
+												</a>
+											</td>
+											<td>
+												<form action="{{ path('job-offer.delete', {id: jobOffer.id})}}" style="display: inline-block;" method="post">
+													<input type="hidden" name="_method" value="DELETE">
+													<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ jobOffer.id) }}">
+													<button class="action-btn border-0" type="submit" style="background-color: transparent;">
+														<i class="fa fa-trash-o"></i>
+													</button>
+												</form>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 {% endblock %}

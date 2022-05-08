@@ -32,7 +32,7 @@ class CompanyController extends AbstractController
     /**
      * Index va chercher la liste des entreprises
      */
-    #[Route('/list-company', name: 'companies')]
+    #[Route('/companies', name: 'companies')]
     public function index(): Response
     {
         $companies = $this->repository->findAll();
