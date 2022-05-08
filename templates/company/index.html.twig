@@ -9,23 +9,10 @@
 
 {% block body %}
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				<div class="page-title-box">
-					<div class="page-title-right">
-						<ol class="route m-0">
-							<li class="route-item">
-								<a href="{{ path('home')}}">Home</a>
-							</li>
-							<li class="route-item">
-								<a href="{{ path('companies')}}">Company List</a>
-							</li>
-						</ol>
-					</div>
-					<h4 class="page-title">Company list management</h4>
-				</div>
-			</div>
-		</div>
+		{% include "_partials/_headers.html.twig" with {
+			title: 'Company list management', 
+			routes: ['home', 'companies'], 
+		} %}
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
