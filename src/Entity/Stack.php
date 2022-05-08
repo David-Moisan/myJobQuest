@@ -21,6 +21,15 @@ class Stack
     #[ORM\ManyToMany(targetEntity: JobOffer::class, mappedBy: 'stacks')]
     private $jobOffers;
 
+    #[ORM\Column(type: 'string', length: 10)]
+    private $type;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isFavorite;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $logo;
+
     public function __construct()
     {
         $this->jobOffers = new ArrayCollection();
@@ -71,6 +80,42 @@ class Stack
         if ($this->jobOffers->removeElement($jobOffer)) {
             $jobOffer->removeStack($this);
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getIsFavorite(): ?bool
+    {
+        return $this->isFavorite;
+    }
+
+    public function setIsFavorite(bool $isFavorite): self
+    {
+        $this->isFavorite = $isFavorite;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }

@@ -45,6 +45,20 @@ class StackRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Method findMyFavorite
+     * @return object
+     */
+    public function findMyFavorite()
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.isFavorite = 1')
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Stack[] Returns an array of Stack objects
     //  */
