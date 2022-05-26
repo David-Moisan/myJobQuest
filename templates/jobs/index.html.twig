@@ -104,7 +104,7 @@
 													<i class="fa fa-times" style="color: red;"></i>
 												</td>
 											{% endif %}
-											<td>{{jobOffer.comment}}</td>
+											<td>{{jobOffer.comment|nl2br}}</td>
 											<td>
 												<a href="{{ path('job-offer.edit', {id: jobOffer.id})}}" class="action-btn">
 													<i class="fa fa-pencil-square-o"></i>

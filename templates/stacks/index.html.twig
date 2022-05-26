@@ -1,11 +1,137 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/order-list-menu.css')}}">
+{% endblock %}
+
 {% block title %}
-	My favorite stack
+My favorite stack
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid">
-		<h1>My Favorite Stack</h1>
+<div class="container-fluid">
+	{% include "_partials/_headers.html.twig" with {title: "My Favorite Stack", routes: ['home', 'stacks']}%}
+	<div class="row">
+		<div class="col-xxl-9">
+			<div class="row">
+				{% for stack in stacks %}
+				<div class="col-sm-6 col-xl-3 mb-3">
+					<div class="card mb-0 h-100">
+						<div class="card-body">
+							<!-- dropdown CRUD -->
+							<h4 class="header-title" id="stackName">
+								{{stack.name}}
+								<!-- My Favorite stack -->
+							</h4>
+							<h5 class="text-muted fw-normal mt-0 text-truncate" id="stackType">
+								{{stack.type}}
+								<!-- Type of my favorite stack -->
+							</h5>
+							<div class="d-flex align-items-center mt-4">
+								<div>
+									<img src="{{ stack.logo }}" alt="logo - {{stack.name}}" width="40" height="40" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<div class="col-sm-6 col-xl-3 mb-3">
+					<div class="card mb-0 h-100">
+						<div class="card-body">
+							<div class="h-100 w-100 rounded d-flex align-items-center justify-content-center"
+								style="border: 2px dashed #dee2e6 !important;">
+								<a href="#" class="text-center text-muted p-2" data-bs-toggle="modal"
+									data-bs-target="#stackModal">
+									<i class="fa fa-plus"></i>
+									<h4 class="font-16 mt-1 mb-0 d-block">Add New Favorite Stack</h4>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xxl-3 col-md-4">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title">Your type of stack</h4>
+
+							<canvas id="type-stack"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
+<!-- <div class="modal" id="stackModal" tabindex="-1" aria-labelledby="stackModalLabel" style="display: block;"
+	aria-modal="true" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="stackModalLabel">Add New Favorite Stack</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save</button>
+			</div>
+		</div>
+	</div>
+</div> -->
+<script>
+	const encode = '{{data|raw}}'
+	let data = JSON.parse(encode)
+
+	const f_type = data.find(item => item.type === 'Frontend')
+	const b_type = data.find(item => item.type === 'Backend')
+
+	function getTypes() {
+		let types = []
+		types.push(f_type.type, b_type.type);
+		return types
+	}
+
+	function countOfType() {
+		var count = {}
+		for (let item of data) {
+			count[item.type] = count[item.type] ? count[item.type] + 1 : 1;
+		}
+		dataOfType = []
+
+		let el1 = count.Frontend;
+		let el2 = count.Backend;
+
+		dataOfType.push(el1)
+		dataOfType.push(el2)
+
+		return dataOfType
+	}
+
+
+	const ctx = document.getElementById('type-stack')
+	const myChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: getTypes(),
+			datasets: [{
+				label: 'Your type of stack',
+				data: countOfType(),
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)'
+				],
+				borderWidth: 1
+			}]
+		}
+	});
+</script>
 {% endblock %}
